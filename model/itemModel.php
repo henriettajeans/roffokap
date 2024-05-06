@@ -13,8 +13,24 @@ class ItemModel extends Database
     public function getItemById($id)
     {
         $query = "SELECT * FROM $this->table  WHERE id = ?";
-        $statement = $this->pdo->prepare($query);
-        $statement->execute([$id]);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addItem(int $sellerId, string $name, string $type, string $description, int $price,)
+    {
+        $query = "INSERT INTO $this->table (`sellerId`, `name`, `type`,  `description`, `price` ) VALUES (?,?,?,?,?)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([$sellerId, $name, $type, $description, $price]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateItem(int $sellerId, string $name, string $type, string $description, int $price, string $soldDate, int $itemId,)
+    {
+        $query = "UPDATE $this->table SET sellerId=?, name=?, type=?, description=?, price=?, sold_date = ?  WHERE id = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([$sellerId, $name, $type, $description, $price, $soldDate, $itemId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
