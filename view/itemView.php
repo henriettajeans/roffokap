@@ -6,7 +6,7 @@ class ItemView
     public function outputItems(array $items): void
     {
         $json = [
-            'garment-count' => count($items),
+            'item-count' => count($items),
             'result' => $items
         ];
         header("Content-Type: application/json");
@@ -16,10 +16,31 @@ class ItemView
     public function displayItems(array $item): void
     {
         $json = [
-            'garment-count' => count($item),
+            'item-count' => count($item),
             'result' => $item
         ];
 
+        header("Content-Type: application/json");
+        echo json_encode($json);
+    }
+
+    public function createNewItem(array $item): void
+    {
+        $json = [
+            'item-count' => count($item),
+            'result' => $item,
+            'message' => "added a new item successfully!"
+        ];
+        header("Content-Type: application/json");
+        echo json_encode($json);
+    }
+
+    public function outputUpdatedItem(array $item): void
+    {
+        $json = [
+            'result' => $item,
+            'message' => "updated successfully!"
+        ];
         header("Content-Type: application/json");
         echo json_encode($json);
     }
