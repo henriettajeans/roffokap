@@ -21,8 +21,8 @@ if (isset($_GET['url'])) {
     $url = $_GET['url'];
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-    if (strpos($url, 'items/') === 0) {
-        $id = substr($url, strlen('items/'));
+    if (strpos($url, 'item/') === 0) {
+        $id = substr($url, strlen('item/'));
         $itemController->getItemById($id);
     }
 } else {

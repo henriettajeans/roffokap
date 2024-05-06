@@ -13,7 +13,7 @@ class ItemView
         echo json_encode($json);
     }
 
-    public function displayItems(array $item): void
+    public function displayItem(array $item): void
     {
         $json = [
             'item-count' => count($item),
