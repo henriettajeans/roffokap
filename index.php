@@ -34,15 +34,18 @@ if (strpos($url, 'sellers/') === 0) {
 
     $id = substr($url, strlen('sellers/'));
     $sellerController->getSellerById($id);
+}
+if ($requestMethod == "PUT") {
+    $itemController->update($id);
 } else {
     switch ($url) {
-        case 'garments':
+        case 'items':
             if ($requestMethod == "GET") {
-                $garmentController->getAll();
+                $itemController->getAll();
             } elseif ($requestMethod == "POST") {
-                $garmentController->add();
+                $itemController->add();
             } else {
-                echo "Invalid Request Method for garments.";
+                echo "Invalid Request Method for items.";
             }
             break;
         case 'sellers':
