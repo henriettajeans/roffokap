@@ -12,4 +12,15 @@ class SellerModel extends Database
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getSellerById(int $id)
+    {
+
+        $query = "SELECT * FROM $this->table
+      WHERE id = ?
+      ORDER BY id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([$id]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

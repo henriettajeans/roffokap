@@ -20,21 +20,15 @@ class ItemController
     }
 
 
-    // public function getGarmentById($id)
-    // {
-    //     $requestMethod = $_SERVER["REQUEST_METHOD"];
+    public function getItemById($id)
+    {
+        $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-    //     switch ($requestMethod) {
-    //         case 'GET':
-    //             $one = $this->model->getGarmentById($id);
-    //             $this->view->displayGarment($one);
-    //             break;
-    //     }
-    // }
-
-
-
-
-
-
+        switch ($requestMethod) {
+            case 'GET':
+                $one = $this->model->getItemById($id);
+                $this->view->displayItem($one);
+                break;
+        }
+    }
 }
