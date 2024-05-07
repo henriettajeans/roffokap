@@ -7,7 +7,8 @@
 This is a REST API built with vanilla PHP that outputs JSON. Use this project as
 a base to build a frontend view or work with it through Postman.
 
-<h2>Installation</h2>
+#Installation
+
 <ol>
 <li>Clone this repository and put it into your MAMP folder <i>htdocs</i>.</li>
 <li>Create the database with your preferred database-name in phpMyAdmin or MySQL Workbench and import the sql-querys from the sql-file found in the <b>db</b> folder-</li>
