@@ -7,7 +7,7 @@
 This is a REST API built with vanilla PHP that outputs JSON. Use this project as
 a base to build a frontend view or work with it through Postman.
 
-#Installation
+# Installation
 
 <ol>
 <li>Clone this repository and put it into your MAMP folder <i>htdocs</i>.</li>
