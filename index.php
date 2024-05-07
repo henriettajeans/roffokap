@@ -25,40 +25,46 @@ if (isset($_GET['url'])) {
         $id = substr($url, strlen('item/'));
         $itemController->getItemById($id);
     }
+
+    if (strpos($url, 'sellers/') === 0) {
+
+        $id = substr($url, strlen('sellers/'));
+        $sellerController->getSellerById($id);
+    }
 } else {
     // If url is not provided
     echo "URL parameter is missing.";
 }
 
-if (strpos($url, 'sellers/') === 0) {
 
-    $id = substr($url, strlen('sellers/'));
-    $sellerController->getSellerById($id);
-}
-if ($requestMethod == "PUT") {
-    $itemController->update($id);
-} else {
-    switch ($url) {
-        case 'items':
-            if ($requestMethod == "GET") {
-                $itemController->getAll();
-            } elseif ($requestMethod == "POST") {
-                $itemController->add();
-            } else {
-                echo "Invalid Request Method for items.";
-            }
-            break;
-        case 'sellers':
-            if ($requestMethod == "GET") {
-                $sellerController->getAll();
-            } elseif ($requestMethod == "POST") {
-                $sellerController->createSeller();
-            } else {
-                echo "Invalid Request Method for sellers.";
-            }
-            break;
-        default:
-            include_once __DIR__ . '/index.php';
-            break;
+if (isset($requestMethod) && isset($url)) {
+    if ($requestMethod == "PUT") {
+        $itemController->update($id);
+    } else {
+        switch ($url) {
+            case 'items':
+                if ($requestMethod == "GET") {
+                    $itemController->getAll();
+                } elseif ($requestMethod == "POST") {
+                    $itemController->add();
+                } else {
+                    echo "Invalid Request Method for items.";
+                }
+                break;
+            case 'sellers':
+                if ($requestMethod == "GET") {
+                    $sellerController->getAll();
+                } elseif ($requestMethod == "POST") {
+                    $sellerController->createSeller();
+                } else {
+                    echo "Invalid Request Method for sellers.";
+                }
+                break;
+            default:
+                include_once __DIR__ . '/index.php';
+                break;
+        }
     }
+} else {
+    echo "Request parameters are missing.";
 }
