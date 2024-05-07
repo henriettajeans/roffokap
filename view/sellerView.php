@@ -22,6 +22,7 @@ class SellerView
         header("Content-Type: application/json");
         echo json_encode($json);
     }
+
     public function outputSellerSubmissions(array $seller): void
     {
         $json = [

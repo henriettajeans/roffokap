@@ -42,9 +42,20 @@ if (isset($_GET['url'])) {
         $id = substr($url, strlen('seller/'));
         $sellerController->getSellerById($id);
     }
-    if (strpos($url, 'submmitted-items/') === 0) {
-        $id = substr($url, strlen('submmitted-items/'));
+
+    if (strpos($url, 'sellers-items/') === 0) {
+        $id = substr($url, strlen('sellers-items/'));
         $sellerController->getSellersListOfItems($id);
+    }
+
+    if (strpos($url, 'sellers-total/') === 0) {
+        $id = substr($url, strlen('sellers-total/'));
+        $sellerController->totalSalesAmount($id);
+    }
+
+    if (strpos($url, 'submitted-items-amount/') === 0) {
+        $id = substr($url, strlen('submitted-items-amount/'));
+        $sellerController->quantitySubmittedItems($id);
     }
 } else {
     // If url is not provided
