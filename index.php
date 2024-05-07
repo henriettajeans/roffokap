@@ -42,6 +42,10 @@ if (isset($_GET['url'])) {
         $id = substr($url, strlen('seller/'));
         $sellerController->getSellerById($id);
     }
+    if (strpos($url, 'submmitted-items/') === 0) {
+        $id = substr($url, strlen('submmitted-items/'));
+        $sellerController->getSellersListOfItems($id);
+    }
 } else {
     // If url is not provided
     echo "URL parameter is missing.";
