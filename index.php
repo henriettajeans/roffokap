@@ -17,6 +17,17 @@ $itemModel = new ItemModel($pdo);
 $itemView = new ItemView();
 $itemController = new ItemController($itemModel, $itemView);
 
+//Seller connections
+require_once __DIR__ . '/model/sellerModel.php';
+require_once __DIR__ . '/controller/sellerController.php';
+require_once __DIR__ . '/view/sellerView.php';
+
+//Seller MVC
+$sellerModel = new SellerModel($pdo);
+$sellerView = new SellerView();
+$sellerController = new SellerController($sellerModel, $sellerView);
+
+
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
     $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -26,9 +37,9 @@ if (isset($_GET['url'])) {
         $itemController->getItemById($id);
     }
 
-    if (strpos($url, 'sellers/') === 0) {
+    if (strpos($url, 'seller/') === 0) {
 
-        $id = substr($url, strlen('sellers/'));
+        $id = substr($url, strlen('seller/'));
         $sellerController->getSellerById($id);
     }
 } else {
