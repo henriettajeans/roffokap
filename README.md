@@ -7,7 +7,7 @@
 This is a REST API built with vanilla PHP that outputs JSON. Use this project as
 a base to build a frontend view or work with it through Postman.
 
-# Installation
+<h2>Local installation</h2>
 
 <ol>
 <li>Clone this repository and put it into your MAMP folder <i>htdocs</i>.</li>
@@ -24,3 +24,6 @@ a base to build a frontend view or work with it through Postman.
 <li>/submitted-items-amount/</li>
 </ul>
 </ol>
+
+<h3>Credits</h3>
+Copyright Henrietta Jeansson 2024
