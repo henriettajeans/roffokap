@@ -27,10 +27,12 @@ $sellerModel = new SellerModel($pdo);
 $sellerView = new SellerView();
 $sellerController = new SellerController($sellerModel, $sellerView);
 
+$requestMethod = $_SERVER["REQUEST_METHOD"];
+
 
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
-    $requestMethod = $_SERVER["REQUEST_METHOD"];
+
 
     if (strpos($url, 'item/') === 0) {
         $id = substr($url, strlen('item/'));
@@ -64,11 +66,12 @@ if (isset($_GET['url'])) {
 
 
 if (isset($requestMethod) && isset($url)) {
+
     if ($requestMethod == "PUT") {
         $itemController->update($id);
     } else {
         switch ($url) {
-            case 'items':
+            case 'items/':
                 if ($requestMethod == "GET") {
                     $itemController->getAll();
                 } elseif ($requestMethod == "POST") {
@@ -77,7 +80,7 @@ if (isset($requestMethod) && isset($url)) {
                     echo "Invalid Request Method for items.";
                 }
                 break;
-            case 'sellers':
+            case 'sellers/':
                 if ($requestMethod == "GET") {
                     $sellerController->getAll();
                 } elseif ($requestMethod == "POST") {
